@@ -1,0 +1,36 @@
+Tutorial:	https://youtu.be/k5E2AVpwsko?si=I5fD1I7joH3wfBFO
+Required software:
+	1. https://nodejs.org/en
+	2. once nodejs installed use Node Package Manager to install Angular CLI (command-line interface) library:
+		npm install -g @angular/cli@latest
+		if install fails then try: npm config set registry http://registry.npmjs.org
+		to check installation: ng version
+	3. create a new angular project: ng new hellow-world
+	4. editor: code.visualstudio.com
+		4.1. add VS to PATH:
+			Ctrl + Shift + P
+			Install 'code' command in PATH
+		????
+	5. to run the code from project directory (start HTTP server): ng serve
+		the URL:  http://localhost:4200/
+	6. Install TypeScript: npm install -g typescript
+		validate installation: tsc --version
+		convert TypeScrip file main.ts to javascript: tsc main.ts
+		to compile ts into js and run js: tsc main.ts && node main.js
+
+_______________________
+
+https://angular.dev/tutorials
+source code: https://github.com/angular/codelabs/tree/homes-app-start
+
+1. After installing angular (see above) download and unzip above repository. 
+2. cmd navigate to app root directory and run nlm install
+3. test installation. run: ng serve
+4. Check if app is running: http://localhost:4200/
+5. Modify main application component: src>app>app.component.tx
+6. Create a new component: >ng generate component Home --standalone --inline-
+template 
+
+
+
+stopped at https://angular.dev/tutorials/first-app/05-inputs
