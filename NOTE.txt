@@ -1,5 +1,6 @@
 Tutorial:	https://youtu.be/k5E2AVpwsko?si=I5fD1I7joH3wfBFO
-Required software:
+
+INSTALL REQUIRED SOFTWARE :
 	1. https://nodejs.org/en
 	2. once nodejs installed use Node Package Manager to install Angular CLI (command-line interface) library:
 		npm install -g @angular/cli@latest
@@ -20,17 +21,33 @@ Required software:
 
 _______________________
 
-https://angular.dev/tutorials
-source code: https://github.com/angular/codelabs/tree/homes-app-start
+GET STARTED WITH HOMES SAMPLE APPLICATIO:
 
-1. After installing angular (see above) download and unzip above repository. 
-2. cmd navigate to app root directory and run nlm install
-3. test installation. run: ng serve
-4. Check if app is running: http://localhost:4200/
-5. Modify main application component: src>app>app.component.tx
-6. Create a new component: >ng generate component Home --standalone --inline-
-template 
+	https://angular.dev/tutorials
+	source code: https://github.com/angular/codelabs/tree/homes-app-start
+
+	1. After installing angular (see above) download and unzip above repository. 
+	3. test installation. run: ng serve
+	4. Check if app is running: http://localhost:4200/
 
 
+CREATING NEW APP/MODULE
+	1. create a new angular project: ng new new-project-name version
+	2. Create a new component: >ng generate component Home --standalone --inline-
+	template 
+	3. Modify main application component: src>app>app.component.tx
 
-stopped at https://angular.dev/tutorials/first-app/05-inputs
+
+CODING
+	1. Add new component in .ts:
+		import {HomeComponent} from './home/home.component';
+		...
+		imports: [HomeComponent],
+  		template: `HTML',
+	2. Add new service
+		ng generate service housing --skip-tests
+
+
+
+
+stopped at https://angular.dev/tutorials/first-app/06-property-binding
