@@ -46,8 +46,57 @@ CODING
   		template: `HTML',
 	2. Add new service
 		ng generate service housing --skip-tests
+	3. tutorial 9. ADD SERVICES
+		3.1. housing.service.ts added (see step 2)
+		3.2. modifications:
+			HousingLocation imported
+			housingLocationList array with properties info added in HousingService class definition
+			getAllHousingLocations and getHousingLocationById methods are added in HousingService class definition
+		3.3. Inject new service in house.service.ts (to replace local array of proprties)
+			import HousingService
+			in HomeComponent class definition add:
+				housingLocationList: HousingLocation[] = [];
+  				housingService: HousingService = inject(HousingService);
+			in constructor method of the class populate housingLocationList with HousingService.getAllHousingLocations
+	4. tutorial 10. ADD ROUTING
+		3.1. add app/routes.ts with routes definitions array
+		3.2. in main.ts import provideRouter and routeConfig; in bootstrap call add  {providers: [provideRouter(routeConfig)]}
+		3.3. in app.component.ts:
+			3.3.1. import RouterModule
+			3.3.2. in @Component.import add RouterModule
+			3.3.3. replace app-home with router-outlet
+	5. enable FORM in details.component.ts
+		5.1. add import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
+		5.2. add  imports: [CommonModule, ReactiveFormsModule],
+		5.3. in export class DetailComponent add
+				route: ActivatedRoute = inject(ActivatedRoute);
+				housingService = inject(HousingService);
+				housingLocation: HousingLocation | undefined;
+				applyForm = new FormGroup({
+					firstName: new FormControl(''),
+					lastName: new FormControl(''),
+					email: new FormControl(''),
+				});
+		5.4. add method 
+				submitApplication() {
+					this.housingService.submitApplication(
+					this.applyForm.value.firstName ?? '',
+					this.applyForm.value.lastName ?? '',
+					this.applyForm.value.email ?? '',
+					);
+				}
+		5.5. add form to the template:
+				<form [formGroup]="applyForm" (submit)="submitApplication()">
+				<label for="first-name">First Name</label>
+				<input id="first-name" type="text" formControlName="firstName" />
+				<label for="last-name">Last Name</label>
+				<input id="last-name" type="text" formControlName="lastName" />
+				<label for="email">Email</label>
+				<input id="email" type="email" formControlName="email" />
+				<button type="submit" class="primary">Apply now</button>
+				</form>
 
 
 
+started https://angular.dev/tutorials/first-app/12-forms
 
-stopped at https://angular.dev/tutorials/first-app/06-property-binding
