@@ -95,8 +95,26 @@ CODING
 				<input id="email" type="email" formControlName="email" />
 				<button type="submit" class="primary">Apply now</button>
 				</form>
+	6. Enable search functionality in HomeComponent
+		6.1. add filteringLocationList variable in export class HomeComponent
+				filteredLocationList: HousingLocation[] = [];
+		6.2. insert it in constructor
+				this.filteredLocationList = this.housingLocationList;
+		6.3. add method to keep entire homes list or filter out list with submitted parameters
+		  		filterResults(text: string) {
+					if (!text) {
+					this.filteredLocationList = this.housingLocationList;
+					return;
+					}
+					this.filteredLocationList = this.housingLocationList.filter(
+					(housingLocation) => housingLocation?.city.toLowerCase().includes(text.toLowerCase()),
+					);
+				}
+		6.4. alter HomeComponent template by adding #filter variable to input tag
+				<input type="text" placeholder="Filter by city" #filter>
+		6.5 bind button click event to a method
+				<button class="primiry" type="button" (click)="filterResults(filter.value)">Search</button>
+		6.6. change loop to go through filteredLocationList and not housingLocationList
+				<app-housing-location *ngFor="let housingLocation of housingLocationList" 
 
-
-
-started https://angular.dev/tutorials/first-app/12-forms
-
+started https://angular.dev/tutorials/first-app/13-search
