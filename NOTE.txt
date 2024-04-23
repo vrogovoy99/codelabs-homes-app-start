@@ -95,6 +95,7 @@ CODING
 				<input id="email" type="email" formControlName="email" />
 				<button type="submit" class="primary">Apply now</button>
 				</form>
+-------https://angular.dev/tutorials/first-app/13-search
 	6. Enable search functionality in HomeComponent
 		6.1. add filteringLocationList variable in export class HomeComponent
 				filteredLocationList: HousingLocation[] = [];
@@ -116,5 +117,23 @@ CODING
 				<button class="primiry" type="button" (click)="filterResults(filter.value)">Search</button>
 		6.6. change loop to go through filteredLocationList and not housingLocationList
 				<app-housing-location *ngFor="let housingLocation of housingLocationList" 
-
-completed https://angular.dev/tutorials/first-app/13-search
+-------https://angular.dev/tutorials/first-app/14-http
+	7. Configure JSON server
+		7.1. Install JSON server
+			npm install -g json-server
+		7.2. cretea db.json file in app root. file will contain array of House objects
+		7.3. test server by viewing file contents
+				npx json-server db.json 
+			then navigate to 
+				http://localhost:3000/locations
+		7.4. in HousingService add 
+			JSON server URL
+				url = 'http://localhost:3000/locations';
+			change methods to use JSON
+				const data = await fetch(`${this.url}/${id}`);
+    			return (await data.json()) ?? {};
+			in HomeComponent and DetailComponent change constructor to use JSON instead of array
+				this.housingService.getAllHousingLocations().then((housingLocationList: HousingLocation[]) => {
+					this.housingLocationList = housingLocationList;
+					this.filteredLocationList = housingLocationList;
+				});
