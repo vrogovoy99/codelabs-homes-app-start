@@ -117,4 +117,4 @@ CODING
 		6.6. change loop to go through filteredLocationList and not housingLocationList
 				<app-housing-location *ngFor="let housingLocation of housingLocationList" 
 
-started https://angular.dev/tutorials/first-app/13-search
+completed https://angular.dev/tutorials/first-app/13-search
